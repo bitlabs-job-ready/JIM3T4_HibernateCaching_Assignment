@@ -1,0 +1,36 @@
+To enable second-level caching in Hibernate, you need to do the following:
+  1.Add a dependency on a caching provider library, such as Ehcache or Infinispan, to your project. For example, if you are using Maven, you can add the following dependency to your pom.xml file:
+  2.Enable second-level caching in your Hibernate configuration file (hibernate.cfg.xml) by adding the following property
+      <property name="hibernate.cache.use_second_level_cache">true</property>
+  3. Configure the caching provider in your Hibernate configuration file. For example, if you are using Ehcache as your caching provider, you can add the following properties:
+       <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+       <property name="net.sf.ehcache.configurationResourceName">/ehcache.xml</property>  
+  4.Annotate the entity classes that you want to cache with the @Cache annotation. For example:
+    import javax.persistence.Cacheable;
+
+     @Entity
+     @Table(name = "employees")
+     @Cacheable
+     public class Employee {
+            // Fields for the employee's ID, first name, last name, etc.
+            // Getters and setters for these fields
+      }
+To demonstrate the use of caching in a Hibernate application, you can create a simple Java application that performs the following steps:
+
+     1.Create a Hibernate session factory and open a Hibernate session.
+
+     2.Load an entity from the database using the session's get() method.
+
+     3.Close the session.
+
+     4.Open a new Hibernate session.
+
+     5.Load the same entity from the database using the session's get() method.
+
+     6.Close the session.
+
+-create a entity called department, with following parameters
+	A.CustomerId.
+	B.CustomerName.
+	C.CustomerEmail.
+        D.CustomerCity.
